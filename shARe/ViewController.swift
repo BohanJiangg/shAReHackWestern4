@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FacebookLogin
 import SceneKit
 import MapKit
 import CocoaLumberjack
@@ -55,7 +54,8 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
         let scene = SCNScene()
         sceneLocationView.scene = scene
         sceneLocationView.autoenablesDefaultLighting = true
-        
+         print("hello")
+        self.view.backgroundColor = nil
         infoLabel.font = UIFont.systemFont(ofSize: 10)
         infoLabel.textAlignment = .left
         infoLabel.textColor = UIColor.white

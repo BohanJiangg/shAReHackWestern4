@@ -16,6 +16,7 @@ import AWSDynamoDB
 import AWSSQS
 import AWSSNS
 import FacebookCore
+import FBSDKLoginKit
 
 
 @UIApplicationMain
@@ -26,6 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
+    //added these 3 methods
+
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        FBSDKAppEvents.activateApp()
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 //        // AWS setup
 //        let didFinishLaunching = AWSSignInManager.sharedInstance().interceptApplication(
@@ -63,19 +75,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.makeKeyAndVisible()
         
         if #available(iOS 11.0, *) {
-            let vc = ViewController()
+            let vc = loginViewController()
             self.window!.rootViewController = vc
         } else {
             self.window!.rootViewController = NotSupportedViewController() 
         }
         
-        return true
+        
+         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
+   /**func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    }
+    }**/
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.

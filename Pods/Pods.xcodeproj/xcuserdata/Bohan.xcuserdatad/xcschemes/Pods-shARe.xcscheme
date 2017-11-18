@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0910"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "789389B968D43B547098638AE2746C1C"
+               BlueprintIdentifier = "FF7FAE72C5026A4B7B8D16D8C7318468"
                BuildableName = "Pods_shARe.framework"
                BlueprintName = "Pods-shARe"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "789389B968D43B547098638AE2746C1C"
+            BlueprintIdentifier = "FF7FAE72C5026A4B7B8D16D8C7318468"
             BuildableName = "Pods_shARe.framework"
             BlueprintName = "Pods-shARe"
             ReferencedContainer = "container:Pods.xcodeproj">
