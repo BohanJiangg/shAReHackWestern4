@@ -23,6 +23,8 @@
 		49A3FC051F0A423800AA59C8 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A3FC041F0A423800AA59C8 /* CGPoint+Extensions.swift */; };
 		49D206F31F124BDD00D7D622 /* SCNNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D206F21F124BDD00D7D622 /* SCNNode+Extensions.swift */; };
 		83C9B7A8940C723DA236CBF9 /* Pods_shARe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B408D657BA2E97498505C42 /* Pods_shARe.framework */; };
+		BF8BE9211FC00B4D005E1A97 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8BE91F1FC00B4C005E1A97 /* FBSDKCoreKit.framework */; };
+		BF8BE9221FC00B4D005E1A97 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8BE9201FC00B4D005E1A97 /* FBSDKLoginKit.framework */; };
 		BFB037FF1F9C49CE00B5E11F /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB037FE1F9C49CE00B5E11F /* Locations.swift */; };
 		BFB038011F9C4D8300B5E11F /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = BFB038001F9C4D8300B5E11F /* awsconfiguration.json */; };
 		D8C205D11F5B197200675E6E /* NotSupportedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C205D01F5B197200675E6E /* NotSupportedViewController.swift */; };
@@ -55,6 +57,8 @@
 		5B408D657BA2E97498505C42 /* Pods_shARe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_shARe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C10523EF85AA6B7CDF962AD /* Pods_ARKit_CoreLocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARKit_CoreLocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A967016A4C9D5DA8BF8AE438 /* Pods-ARKit+CoreLocation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKit+CoreLocation.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARKit+CoreLocation/Pods-ARKit+CoreLocation.release.xcconfig"; sourceTree = "<group>"; };
+		BF8BE91F1FC00B4C005E1A97 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		BF8BE9201FC00B4D005E1A97 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		BFB037FE1F9C49CE00B5E11F /* Locations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		BFB038001F9C4D8300B5E11F /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		D8C205D01F5B197200675E6E /* NotSupportedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotSupportedViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CFFA0251F9C301900A72BC3 /* CocoaLumberjack.framework in Frameworks */,
+				BF8BE9211FC00B4D005E1A97 /* FBSDKCoreKit.framework in Frameworks */,
+				BF8BE9221FC00B4D005E1A97 /* FBSDKLoginKit.framework in Frameworks */,
 				83C9B7A8940C723DA236CBF9 /* Pods_shARe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +144,8 @@
 		F2E2E005FD78BDD52B0F8A94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF8BE91F1FC00B4C005E1A97 /* FBSDKCoreKit.framework */,
+				BF8BE9201FC00B4D005E1A97 /* FBSDKLoginKit.framework */,
 				0CFFA0261F9C301900A72BC3 /* CocoaLumberjack.framework */,
 				0CFFA0241F9C2A1E00A72BC3 /* CocoaLumberjack.framework */,
 				0CFFA0211F9C29F100A72BC3 /* CocoaLumberjack.swift */,
@@ -283,7 +291,14 @@
 				"${BUILT_PRODUCTS_DIR}/AWSSNS/AWSSNS.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSSQS/AWSSQS.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSSimpleDB/AWSSimpleDB.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -311,7 +326,14 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSSNS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSSQS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSSimpleDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -466,11 +488,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4KP88T4Z25;
+				DEVELOPMENT_TEAM = 25G56B3687;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = shARe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "shARe1.buildOne.ARKit-CoreLocation";
+				PRODUCT_BUNDLE_IDENTIFIER = "shARe1.buildOne.ARKit-CoreLocation1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -485,11 +511,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4KP88T4Z25;
+				DEVELOPMENT_TEAM = 25G56B3687;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = shARe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "shARe1.buildOne.ARKit-CoreLocation";
+				PRODUCT_BUNDLE_IDENTIFIER = "shARe1.buildOne.ARKit-CoreLocation1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

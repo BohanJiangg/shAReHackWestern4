@@ -22,7 +22,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 NSString *const AWSInfoInteractionKit = @"LexInteractionKit";
-NSString *const AWSInteractionKitSDKVersion = @"2.6.4";
+NSString *const AWSInteractionKitSDKVersion = @"2.6.6";
 NSString *const AWSInternalLexInteractionKit = @"LexInteractionKitClient";
 NSString *const AWSLexInteractionKitUserAgent = @"interactionkit";
 NSString *const AWSLexInteractionKitErrorDomain = @"com.amazonaws.AWSLexInteractionKitErrorDomain";
@@ -857,11 +857,11 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }];
 }
 
-- (void)dispatchBlockOnMainQueue:(void (^)())block{
+- (void)dispatchBlockOnMainQueue:(void (^)(void))block{
     dispatch_async(dispatch_get_main_queue(), block);
 }
 
-- (void)dispatchBlockOnInteractionDelegateQueue:(void (^)())block{
+- (void)dispatchBlockOnInteractionDelegateQueue:(void (^)(void))block{
     dispatch_async(interactionDelegateQueue, block);
 }
 
