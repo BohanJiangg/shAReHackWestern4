@@ -219,11 +219,11 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
             
             
             // Set lat and long with Bohan's method afterwards
-            locationItem.id = String(transform.columns.3.x) + String(transform.columns.3.y)
-            locationItem.x = NSNumber(value: transform.columns.3.x)
-            locationItem.y = NSNumber(value: transform.columns.3.y)
-            locationItem.z = NSNumber(value: transform.columns.3.z)
-            locationItem.comment = textField.text!
+            locationItem._id = String(transform.columns.3.x) + String(transform.columns.3.y)
+            locationItem._x = NSNumber(value: transform.columns.3.x)
+            locationItem._y = NSNumber(value: transform.columns.3.y)
+            locationItem._z = NSNumber(value: transform.columns.3.z)
+            locationItem._comment = textField.text!
             // Save a new item
             dynamoDbObjectMapper.save(locationItem, completionHandler: {
                 (error: Error?) -> Void in
