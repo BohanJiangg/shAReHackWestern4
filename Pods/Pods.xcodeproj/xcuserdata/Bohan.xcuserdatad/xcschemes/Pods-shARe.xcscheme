@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FF7FAE72C5026A4B7B8D16D8C7318468"
+               BlueprintIdentifier = "2822F13641E848F5FA7F086EAD287B66"
                BuildableName = "Pods_shARe.framework"
                BlueprintName = "Pods-shARe"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FF7FAE72C5026A4B7B8D16D8C7318468"
+            BlueprintIdentifier = "2822F13641E848F5FA7F086EAD287B66"
             BuildableName = "Pods_shARe.framework"
             BlueprintName = "Pods-shARe"
             ReferencedContainer = "container:Pods.xcodeproj">

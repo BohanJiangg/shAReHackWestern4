@@ -18,10 +18,15 @@ import AWSS3
 import AWSDynamoDB
 import AWSSQS
 import AWSSNS
+import FacebookCore
+import FacebookLogin
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 
 @available(iOS 11.0, *)
 class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDelegate, ARSCNViewDelegate, UITextFieldDelegate{
+    
          
     let sceneLocationView = SceneLocationView()
     
@@ -45,7 +50,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
     var infoLabel = UILabel()
     
     var updateInfoLabelTimer: Timer?
-    
+    @IBOutlet weak var loginButton: FBSDKLoginButton!
     var adjustNorthByTappingSidesOfScreen = false
     
     override func viewDidLoad() {
@@ -114,18 +119,70 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
         view.addSubview(textField)
         
         let button = UIButton(type: UIButtonType.contactAdd) as UIButton
-        let screenCentre : CGPoint = CGPoint(x: self.view.frame.width / 2, y: (self.view.frame.width / 4))
+        let screenCentre : CGPoint = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/3)
         button.frame = CGRect(origin: screenCentre, size: CGSize(width: 100, height: 100))
-        button.center = view.center
+        button.center = screenCentre
         button.tintColor = UIColor.white
         view.addSubview(button)
+       
+        /**
+        let logOutPoint : CGPoint = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height - 30)
+        let loginButton = FBSDKLoginButton()
+        loginButton.center =  logOutPoint
+        view.addSubview(loginButton)
+       // self.loginButton.delegate = self**/
+        
+        let exit = UIButton(frame: CGRect(x: self.view.bounds.width/2, y: self.view.bounds.height - 30, width: 100, height: 25))
+        exit.backgroundColor = UIColor(red:0.23, green:0.35, blue:0.60, alpha:1.0)
+        let exitCentre : CGPoint = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height - 30)
+        //exit.tintColor = red
+        exit.setTitle("Logout", for: .normal)
+        exit.center = exitCentre
+        exit.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        
+        self.view.addSubview(exit)
         
     }
+    
+    @objc func buttonAction(sender: UIButton!) {
+        
+        NSLog("Hello")
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+        let viewController:UIViewController = UIStoryboard(name: "login", bundle: nil).instantiateViewController(withIdentifier: "loginViewController") as UIViewController
+        // .instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
+        //self.view.backgroundColor = nil
+        self.present(viewController, animated: false, completion: nil)
+    }
+    
     override func updateViewConstraints() {
         textFieldConstraints()
         super.updateViewConstraints()
     }
+    /**
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if ((error) != nil) {
+            // Process error
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            
+            let viewController:UIViewController = UIStoryboard(name: "login", bundle: nil).instantiateViewController(withIdentifier: "loginViewController") as UIViewController
+            // .instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
+            //self.view.backgroundColor = nil
+            self.present(viewController, animated: false, completion: nil)
+            let loginManager = FBSDKLoginManager()
+            loginManager.logOut()
+            print("User Logged Out")
+        }
+    }
     
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+         print("User Logged Out")
+    }
+    **/
     func textFieldConstraints() {
         NSLayoutConstraint(
             item: textField,
@@ -190,7 +247,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
         }
         
         
-        let screenCentre : CGPoint = CGPoint(x: self.sceneLocationView.bounds.midX, y: self.sceneLocationView.bounds.midY)
+        let screenCentre : CGPoint = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/3)
        
     
         

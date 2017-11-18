@@ -73,6 +73,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.28.0):
     - FBSDKCoreKit
+  - Pastel (0.3.0)
 
 DEPENDENCIES:
   - ARCL
@@ -103,6 +104,7 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FacebookShare
+  - Pastel
 
 EXTERNAL SOURCES:
   CocoaLumberjack:
@@ -147,7 +149,8 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: ca961e279113f691fd83dc634c0bbad9d4e3f370
   FBSDKLoginKit: b077381c27d800f21661757e8140cf2c80a91e4a
   FBSDKShareKit: 4f525556e0df4cf0f574cb3f01c675434f29d477
+  Pastel: 738740c84f2b15bbcd96ebe99c4e6c2f5dd42262
 
-PODFILE CHECKSUM: ecee8461362386839ca2b65a9a2441abbe502566
+PODFILE CHECKSUM: 1b6ff31c8e7ec8efbde25274abb23a1e74c72a37
 
 COCOAPODS: 1.3.1

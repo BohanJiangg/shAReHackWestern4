@@ -28,6 +28,7 @@ pod 'AWSAutoScaling'
     pod 'AWSSimpleDB'
     pod 'AWSSNS'
     pod 'AWSSQS'
+    pod 'Pastel'
 target 'shARe' do
 	pod 'CocoaLumberjack/Swift', :git => 'https://github.com/CocoaLumberjack/CocoaLumberjack', :branch => 'master'
     end
