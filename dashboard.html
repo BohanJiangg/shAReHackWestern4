@@ -57,7 +57,7 @@
       FB.AppEvents.logPageView();
     };
 
-    function scanData(){
+    function scanData(docClient){
       var params = {
          TableName: "share-mobilehub-1774715290-locations",
          ProjectionExpression: "#zvalue, title, info.rating",
@@ -75,7 +75,7 @@
 
      function onScan(err, data) {
        if (err){
-         console.log(err);
+         var x = "c";
        } else {
          console.log(data);
        }
@@ -95,7 +95,7 @@
         });
         var dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
         var docClient = new AWS.DynamoDB.DocumentClient({service: dynamodb });
-        scanData();
+        scanData(docClient);
         // If not Authorized, redirect to index and avoid
         //location.replace("index.html");
       }
