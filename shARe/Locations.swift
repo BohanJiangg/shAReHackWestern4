@@ -17,11 +17,13 @@ import AWSDynamoDB
 
 class Locations: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     
-    @IBOutlet var id: String!
-    @IBOutlet var comment: String!
-    @IBOutlet var x: NSNumber!
-    @IBOutlet var y: NSNumber!
-    @IBOutlet var z: NSNumber!
+    var _id: String?
+    var _comment: String?
+    var _lat: String?
+    var _long: String?
+    var _x: NSNumber?
+    var _y: NSNumber?
+    var _z: NSNumber?
     
     class func dynamoDBTableName() -> String {
         
@@ -30,17 +32,18 @@ class Locations: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     
     class func hashKeyAttribute() -> String {
         
-        return "id"
+        return "_id"
     }
     
     override class func jsonKeyPathsByPropertyKey() -> [AnyHashable: Any] {
         return [
-            "id" : "id",
-            "comment" : "comment",
-            "x" : "x",
-            "y" : "y",
-            "z" : "z",
+            "_id" : "id",
+            "_comment" : "comment",
+            "_lat" : "lat",
+            "_long" : "long",
+            "_x" : "x",
+            "_y" : "y",
+            "_z" : "z",
         ]
     }
 }
-
