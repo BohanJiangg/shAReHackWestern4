@@ -28,6 +28,67 @@
 
   </head>
 
+
+  <!-- LEAVE THIS SCRIPT ALONE, CHANGE ANYTHNG ELSE OTHER THAN THE LOGIN BUTTON BUT YOU CAN PLAY AROUND WITH PLACEMENT OF THE BUTTON -->
+  <!-- Look for the button below in the doc it has a tag like <fb or something -->
+  <!-- NEVER MIND, I SAVED THE CODE HERE
+
+  <fb:login-button
+    scope="public_profile,email"
+    onlogin="checkLoginState();">
+  </fb:login-button>
+
+  -->
+  <script>
+
+  // Testing Global Variable. REMOVE BEFORE PRODUCTION PHASE
+  var response_json = {};
+
+    // Asynchronously iniitializes Facebook Integration
+    // App ID, API version, xfbml = true
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '291168591401232',
+        xfbml      : true,
+        version    : 'v2.11'
+      });
+      FB.AppEvents.logPageView();
+    };
+
+    function statusChangeCallback(response){
+      // Testing Line with Global Variable. Remove later
+      // Just for testing response json keys/values
+      response_json = response;
+      if (response.status === "not_authorized") {
+        // If not Authorized, redirect to index and avoid
+        location.replace("index.html")
+      }
+    }
+
+    // Function to check login state - when I wake up, implement on document Load
+    // So redirect if not logged, ie. don't let them get to Dashboard if they're not
+    // Authorized
+    function checkLoginState() {
+      // Get the login response from the page
+      FB.getLoginStatus(function(response) {
+        // Call the statusChangeCallback function
+        statusChangeCallback(response);
+      });
+    }
+
+    // Load the SDK Asynchronously
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+  <!-- Feel Free to Change below this as well -->
+
+
   <body id="page-top">
 
     <!-- Navigation -->
@@ -228,34 +289,7 @@
     <!-- Custom scripts for this template -->
     <script src="js/new-age.min.js"></script>
 
-    <script>
 
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '291168591401232',
-          xfbml      : true,
-          version    : 'v2.11'
-        });
-        FB.AppEvents.logPageView();
-      };
-
-      function checkLoginState() {
-        FB.getLoginStatus(function(response) {
-          statusChangeCallback(response);
-          console.log(response);
-        });
-      }
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "https://connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-
-
-    </script>
 
 
   </body>
