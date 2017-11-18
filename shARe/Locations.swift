@@ -19,8 +19,8 @@ class Locations: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     
     var _id: String?
     var _comment: String?
-    var _lat: String?
-    var _long: String?
+    var _lat: NSNumber?
+    var _long: NSNumber?
     var _x: NSNumber?
     var _y: NSNumber?
     var _z: NSNumber?

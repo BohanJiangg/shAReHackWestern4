@@ -54,13 +54,13 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
         let scene = SCNScene()
         sceneLocationView.scene = scene
         sceneLocationView.autoenablesDefaultLighting = true
-         print("hello")
         self.view.backgroundColor = nil
         infoLabel.font = UIFont.systemFont(ofSize: 10)
         infoLabel.textAlignment = .left
         infoLabel.textColor = UIColor.white
         infoLabel.numberOfLines = 0
         sceneLocationView.addSubview(infoLabel)
+       
         
         /* No need for Timer */
         updateInfoLabelTimer = Timer.scheduledTimer(
@@ -114,7 +114,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
         view.addSubview(textField)
         
         let button = UIButton(type: UIButtonType.contactAdd) as UIButton
-        let screenCentre : CGPoint = CGPoint(x: self.sceneLocationView.bounds.midX, y: self.sceneLocationView.bounds.midY)
+        let screenCentre : CGPoint = CGPoint(x: self.view.frame.width / 2, y: (self.view.frame.width / 4))
         button.frame = CGRect(origin: screenCentre, size: CGSize(width: 100, height: 100))
         button.center = view.center
         button.tintColor = UIColor.white
@@ -173,8 +173,16 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
     
     
     @objc func handleTap(gestureRecognize: UITapGestureRecognizer?) {
+        
+        NSLog("test")
         // HIT TEST : REAL WORLD
         // Get Screen Centre
+        
+        let currentLocation = sceneLocationView.currentLocation()
+        let currentCoordinate = currentLocation?.coordinate
+        let currentLatitude = currentCoordinate?.latitude
+        let currentLongitude = currentCoordinate?.longitude
+        NSLog("\(currentLatitude), \(currentLongitude)")
         
         if (gestureRecognize != nil) {
         textField.isHidden = false
@@ -183,6 +191,8 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
         
         
         let screenCentre : CGPoint = CGPoint(x: self.sceneLocationView.bounds.midX, y: self.sceneLocationView.bounds.midY)
+       
+    
         
         let arHitTestResults : [ARHitTestResult] = sceneLocationView.hitTest(screenCentre, types: [.featurePoint]) // Alternatively, we could use '.existingPlaneUsingExtent' for more grounded hit-test-points.
         
@@ -191,17 +201,18 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
             let transform : matrix_float4x4 = closestResult.worldTransform
             let worldCoord : SCNVector3 = SCNVector3Make(transform.columns.3.x, transform.columns.3.y, transform.columns.3.z)
             
+            
             // Create 3D Text
             
             if closestResult.anchor != nil {
-                print("HIT A PIN!")
+                NSLog("HIT A PIN!")
             } else {
                 // Print out coordinates
                 // let node : SCNNode = createNewBubbleParentNode( "\(String(describing: worldCoord))" )
                 if (textField.text! != ""){
                     // Print out coordinates
                     // let node : SCNNode = createNewBubbleParentNode( "\(String(describing: worldCoord))" )
-                    
+                   
                     let node : SCNNode = createNewBubbleParentNode( "\(textField.text!)" )
                     //textFieldShouldReturn(textField)
                     textField.text=""
@@ -223,6 +234,8 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
             locationItem._x = NSNumber(value: transform.columns.3.x)
             locationItem._y = NSNumber(value: transform.columns.3.y)
             locationItem._z = NSNumber(value: transform.columns.3.z)
+            locationItem._lat = currentLatitude as! NSNumber
+            locationItem._long = currentLongitude as! NSNumber
             locationItem._comment = textField.text!
             // Save a new item
             dynamoDbObjectMapper.save(locationItem, completionHandler: {
