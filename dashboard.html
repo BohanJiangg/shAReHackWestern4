@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="ShARe">
-    <meta name="author" content="ARsonists">
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ShARe">
+  <meta name="author" content="ShAReTeam">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-    <title>ShARe Web Companion - Dashboard - test</title>
+  <title>ShARe Web Companion - Dashboard</title>
 
-    <!-- Custom fonts for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-
-  </head>
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
   <!-- AWS SDK for JavaScript -->
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.152.0.min.js"></script>
@@ -34,15 +32,15 @@
   <!-- Look for the button below in the doc it has a tag like <fb or something -->
 
   <fb:login-button
-    scope="public_profile,email"
-    onlogin="checkLoginState();">
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
   </fb:login-button>
-
+  
+  <script type="text/js" src="assets/js/dashboard_auth.js"></script>
   <script type="text/js" src="assets/js/dashboard.js"></script>
+</head>
 
-  <!-- Feel Free to Change below this as well -->
 <body>
-
 	<div id="wrapper">
     <header id="header">
       <nav>
