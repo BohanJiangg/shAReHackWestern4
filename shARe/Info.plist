@@ -33,6 +33,19 @@
 	<string>291168591401232</string>
 	<key>FacebookDisplayName</key>
 	<string>Simplified iOS</string>
+	<key>AWS</key>
+	<dict>
+		<key>CredentialsProvider</key>
+		<dict>
+			<key>Default</key>
+			<dict>
+				<key>Region</key>
+				<string>USEast1</string>
+				<key>PoolId</key>
+				<string>us-east-1:456a4c88-7f96-4783-a82e-a97f2c9dc22a</string>
+			</dict>
+		</dict>
+	</dict>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
