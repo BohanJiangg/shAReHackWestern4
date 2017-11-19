@@ -72,13 +72,24 @@
         });
         var params = {
           TableName : 'share-mobilehub-1774715290-locations',
-          Key: { 'id': '0.385739-0.254811'}
+          // Key: { 'id': '0.385739-0.254811'}
+         // FilterExpression: "#zvalue between :start_yr and :end_yr",
+         // ExpressionAttributeNames: {
+         //     "#zvalue": "z",
+         // },
+         // ExpressionAttributeValues: {
+         //     ":start_yr": 0.04,
+         //     ":end_yr": 0.31
+         // }
         };
         var documentClient = new AWS.DynamoDB.DocumentClient();
 
-        documentClient.get(params, function(err, data) {
+        documentClient.scan(params, function(err, data) {
           if (err) console.log(err);
-          else console.log(data);
+          else {
+            data_scan = data;
+            console.log(data);
+          }
         });
       //   var dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
       //   var docClient = new AWS.DynamoDB.DocumentClient({service: dynamodb });
@@ -164,7 +175,6 @@
         });
         var marker = new google.maps.Marker({
           position: location,
-          label: "Home Base",
           map: map
         });
       }
