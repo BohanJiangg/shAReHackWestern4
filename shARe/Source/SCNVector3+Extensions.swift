@@ -1,10 +1,6 @@
 //
 //  SCNVecto3+Extensions.swift
-//  ARKit+CoreLocation
-//
-//  Created by Andrew Hart on 23/07/2017.
-//  Copyright © 2017 Project Dent. All rights reserved.
-//
+
 
 import SceneKit
 

@@ -1,10 +1,5 @@
 //
 //  ViewController.swift
-//  ARKit+CoreLocation
-//
-//  Created by Andrew Hart on 02/07/2017.
-//  Copyright © 2017 Project Dent. All rights reserved.
-//
 
 import UIKit
 import SceneKit
@@ -45,7 +40,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
     ///Whether to display some debugging data
     ///This currently displays the coordinate of the best location estimate
     ///The initial value is respected
-    var displayDebugging = true
+    var displayDebugging = false
     
     var infoLabel = UILabel()
     
@@ -139,6 +134,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
         let exitCentre : CGPoint = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height - 30)
         //exit.tintColor = red
         exit.setTitle("Logout", for: .normal)
+        exit.layer.cornerRadius = 5
         exit.center = exitCentre
         exit.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
@@ -278,6 +274,12 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
                     //let date = Date(timeIntervalSince1970: timestamp)
                     //print("\(date)")
                     let node : SCNNode = createNewBubbleParentNode( "\(textField.text!)" )
+                    let field = textField.text!
+                    textField.text=""
+                    textField.isHidden = true
+                    textField.resignFirstResponder()
+                    node.position = worldCoord
+                    sceneLocationView.scene.rootNode.addChildNode(node)
                     // Upload coordiantes
                     let dynamoDbObjectMapper = AWSDynamoDBObjectMapper.default()
                     
@@ -292,8 +294,10 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
                     locationItem._z = String(describing: transform.columns.3.z)
                     locationItem._lat = String(describing: currentLatitude!)
                     locationItem._long = String(describing: currentLongitude!)
-                    locationItem._comment = textField.text!
+                    locationItem._comment = field
                     locationItem._time = String(timestamp)
+                    
+                    //textFieldShouldReturn(textField)
                     
                     // Save a new item
                     dynamoDbObjectMapper.save(locationItem, completionHandler: {
@@ -305,14 +309,16 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
                         }
                         print("A location was added.")
                     })
-                    //textFieldShouldReturn(textField)
-                    textField.text=""
-                    textField.isHidden = true
-                    textField.resignFirstResponder()
-                    node.position = worldCoord
-                    sceneLocationView.scene.rootNode.addChildNode(node)
+                    
                 }
             }
+            
+            
+            
+            
+            
+            
+            
            
             
         }
@@ -513,7 +519,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
     }
     
     @objc func updateInfoLabel() {
-        if let position = sceneLocationView.currentScenePosition() {
+       /* if let position = sceneLocationView.currentScenePosition() {
             infoLabel.text = "x: \(String(format: "%.2f", position.x)), y: \(String(format: "%.2f", position.y)), z: \(String(format: "%.2f", position.z))\n"
         }
         
@@ -524,7 +530,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
         if let heading = sceneLocationView.locationManager.heading,
             let accuracy = sceneLocationView.locationManager.headingAccuracy {
             infoLabel.text!.append("Heading: \(heading)º, accuracy: \(Int(round(accuracy)))º\n")
-        }
+        }*/
         
         /*let date = Date()
          let comp = Calendar.current.dateComponents([.hour, .minute, .second, .nanosecond], from: date)

@@ -1,9 +1,6 @@
 //
 //  SceneLocationView.swift
-//  ARKit+CoreLocation
 //
-//  Created by Andrew Hart on 02/07/2017.
-//  Copyright © 2017 Project Dent. All rights reserved.
 //
 
 import Foundation
@@ -108,7 +105,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         delegate = self
 
         // Show statistics such as fps and timing information
-        showsStatistics = true
+        showsStatistics = false
         
 
         if showFeaturePoints {

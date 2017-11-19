@@ -1,10 +1,6 @@
 //
 //  SceneLocationEstimate+Extensions.swift
-//  ARKit+CoreLocation
-//
-//  Created by Andrew Hart on 16/07/2017.
-//  Copyright © 2017 Project Dent. All rights reserved.
-//
+
 
 import CoreLocation
 import SceneKit

@@ -1,10 +1,6 @@
 //
 //  NotSupportedViewController.swift
-//  ARKit+CoreLocation
-//
-//  Created by Vihan Bhargava on 9/2/17.
-//  Copyright © 2017 Project Dent. All rights reserved.
-//
+
 
 import UIKit
 

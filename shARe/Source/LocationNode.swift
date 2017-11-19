@@ -1,10 +1,6 @@
 //
 //  LocationNode.swift
-//  ARKit+CoreLocation
-//
-//  Created by Andrew Hart on 02/07/2017.
-//  Copyright © 2017 Project Dent. All rights reserved.
-//
+
 
 import Foundation
 import SceneKit
