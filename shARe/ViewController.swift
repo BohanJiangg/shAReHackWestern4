@@ -43,7 +43,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
     var displayDebugging = false
     
     var infoLabel = UILabel()
-    
+   
     var updateInfoLabelTimer: Timer?
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     var adjustNorthByTappingSidesOfScreen = false
@@ -283,34 +283,59 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
                     sceneLocationView.scene.rootNode.addChildNode(node)
                     // Upload coordiantes
                     let dynamoDbObjectMapper = AWSDynamoDBObjectMapper.default()
-                    
+                    let updateMapperConfig = AWSDynamoDBObjectMapperConfiguration()
+                    updateMapperConfig.saveBehavior = .updateSkipNullAttributes
                     //Create data object using data models you downloaded from Mobile Hub
                     let locationItem: Locations = Locations();
                     
                     
                     // Set lat and long with Bohan’s method afterwards
-                    locationItem._id = String(transform.columns.3.x) + String(transform.columns.3.y)
-                    locationItem._x = String(describing: transform.columns.3.x)
-                    locationItem._y = String(describing: transform.columns.3.y)
-                    locationItem._z = String(describing: transform.columns.3.z)
-                    locationItem._lat = String(describing: currentLatitude!)
-                    locationItem._long = String(describing: currentLongitude!)
+                    /**locationItem._id = String(transform.columns.3.x) + String(transform.columns.3.y)
+                
+                    locationItem._x = String(transform.columns.3.x)
+                    locationItem._y = String(transform.columns.3.y)
+                    locationItem._z = String(transform.columns.3.z)
+                    locationItem._lat = String(currentLatitude!)
+                    locationItem._long = String(currentLongitude!)
+                   
                     locationItem._comment = field
                     locationItem._time = String(timestamp)
+                    
+                    **/
+                    locationItem.id = "23"
+                    locationItem.x = "23"
+                    locationItem.y = "23"
+                    locationItem.z = "23"
+                    locationItem.lat = "23"
+                    locationItem.long = "23"
+                    locationItem.comment = "23"
+                    locationItem.time = "23"
+                     print("\(locationItem.id) and \(locationItem.x) and \(locationItem.y) and \(locationItem.z) and \(locationItem.lat) and \(locationItem.long) and \(locationItem.comment) and \(locationItem.time)")
                     
                     //textFieldShouldReturn(textField)
                     
                     // Save a new item
+                    
+                    dynamoDbObjectMapper.save(locationItem).continueWith(block: { (task:AWSTask<AnyObject>!) -> Any? in
+                        if let error = task.error as? NSError {
+                            print("The request failed. Error: \(error)")
+                        } else {
+                           print("A location was added.")
+                        }
+                        return nil;
+                    })
+                    
+                    /**
                     dynamoDbObjectMapper.save(locationItem, completionHandler: {
                         (error: Error?) -> Void in
                         
                         if let error = error {
-                            print("Amazon DynamoDB Save Error: \(error.localizedDescription)")
+                            print("Amazon DynamoDB Save Error: \(error)")
                             return
                         }
                         print("A location was added.")
                     })
-                    
+                    **/
                 }
             }
   

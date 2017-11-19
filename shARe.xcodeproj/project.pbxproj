@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C64FE6F1FC1507500395317 /* EmojiKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0C64FE681FC1507500395317 /* EmojiKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0C7925BC1FC01F520061141B /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7925BB1FC01F520061141B /* loginViewController.swift */; };
 		0CDCE0C71FC03C3700AB0EB2 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CDCE0C61FC03C3700AB0EB2 /* login.storyboard */; };
 		0CFFA0251F9C301900A72BC3 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CFFA0261F9C301900A72BC3 /* CocoaLumberjack.framework */; };
@@ -33,16 +32,6 @@
 		D8C205D11F5B197200675E6E /* NotSupportedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C205D01F5B197200675E6E /* NotSupportedViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		0C64FE6D1FC1507500395317 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 49A3FBD01F09988100AA59C8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0C64FE671FC1507500395317;
-			remoteInfo = EmojiKeyboard;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		0C64FE731FC1507500395317 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -50,7 +39,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				0C64FE6F1FC1507500395317 /* EmojiKeyboard.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,7 +46,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0C64FE681FC1507500395317 /* EmojiKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EmojiKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C7925BB1FC01F520061141B /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		0CDCE0C61FC03C3700AB0EB2 /* login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
 		0CFFA0201F9C29E100A72BC3 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,13 +82,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0C64FE651FC1507500395317 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		49A3FBD51F09988100AA59C8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -130,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				49A3FBD81F09988100AA59C8 /* shARe.app */,
-				0C64FE681FC1507500395317 /* EmojiKeyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -199,23 +178,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0C64FE671FC1507500395317 /* EmojiKeyboard */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0C64FE701FC1507500395317 /* Build configuration list for PBXNativeTarget "EmojiKeyboard" */;
-			buildPhases = (
-				0C64FE641FC1507500395317 /* Sources */,
-				0C64FE651FC1507500395317 /* Frameworks */,
-				0C64FE661FC1507500395317 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = EmojiKeyboard;
-			productName = EmojiKeyboard;
-			productReference = 0C64FE681FC1507500395317 /* EmojiKeyboard.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		49A3FBD71F09988100AA59C8 /* shARe */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49A3FBEC1F09988100AA59C8 /* Build configuration list for PBXNativeTarget "shARe" */;
@@ -231,7 +193,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				0C64FE6E1FC1507500395317 /* PBXTargetDependency */,
 			);
 			name = shARe;
 			productName = "ARKit+CoreLocation";
@@ -248,10 +209,6 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Project Dent";
 				TargetAttributes = {
-					0C64FE671FC1507500395317 = {
-						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
-					};
 					49A3FBD71F09988100AA59C8 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
@@ -272,19 +229,11 @@
 			projectRoot = "";
 			targets = (
 				49A3FBD71F09988100AA59C8 /* shARe */,
-				0C64FE671FC1507500395317 /* EmojiKeyboard */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0C64FE661FC1507500395317 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		49A3FBD61F09988100AA59C8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -417,13 +366,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0C64FE641FC1507500395317 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		49A3FBD41F09988100AA59C8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -448,14 +390,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		0C64FE6E1FC1507500395317 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0C64FE671FC1507500395317 /* EmojiKeyboard */;
-			targetProxy = 0C64FE6D1FC1507500395317 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		49A3FBE61F09988100AA59C8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -468,97 +402,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		0C64FE711FC1507500395317 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4KP88T4Z25;
-				INFOPLIST_FILE = EmojiKeyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "shARe1.buildOne.ARKit-CoreLocation.EmojiKeyboard";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		0C64FE721FC1507500395317 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4KP88T4Z25;
-				INFOPLIST_FILE = EmojiKeyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "shARe1.buildOne.ARKit-CoreLocation.EmojiKeyboard";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		49A3FBEA1F09988100AA59C8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
 		49A3FBEB1F09988100AA59C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -607,29 +450,6 @@
 			};
 			name = Release;
 		};
-		49A3FBED1F09988100AA59C8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F0EFF268941472492DE3B7C /* Pods-shARe.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4KP88T4Z25;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = shARe/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "shARe1.buildOne.ARKit-CoreLocation";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 		49A3FBEE1F09988100AA59C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 22424B6BAC79FD53D2252EA2 /* Pods-shARe.release.xcconfig */;
@@ -656,19 +476,9 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0C64FE701FC1507500395317 /* Build configuration list for PBXNativeTarget "EmojiKeyboard" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0C64FE711FC1507500395317 /* Debug */,
-				0C64FE721FC1507500395317 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		49A3FBD31F09988100AA59C8 /* Build configuration list for PBXProject "shARe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49A3FBEA1F09988100AA59C8 /* Debug */,
 				49A3FBEB1F09988100AA59C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -677,7 +487,6 @@
 		49A3FBEC1F09988100AA59C8 /* Build configuration list for PBXNativeTarget "shARe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49A3FBED1F09988100AA59C8 /* Debug */,
 				49A3FBEE1F09988100AA59C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

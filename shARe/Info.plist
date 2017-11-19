@@ -35,6 +35,8 @@
 	<string>Simplified iOS</string>
 	<key>AWS</key>
 	<dict>
+		<key>New item</key>
+		<string></string>
 		<key>CredentialsProvider</key>
 		<dict>
 			<key>Default</key>
