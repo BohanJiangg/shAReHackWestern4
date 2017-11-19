@@ -2,7 +2,7 @@
 
 /**
  * Callback upon retriving login status
- * @param {Object} response 
+ * @param {Object} response
  */
 function statusChangeCallback(response){
     if (response.status === "connected") {
@@ -23,6 +23,13 @@ function retrieveDBData(documentClient) {
             updateMarkers(data);
         }
     });
+}
+
+function logoutFB(){
+  FB.logout(function(response) {
+    // User Logged Out
+  });
+  location.replace("index.html");
 }
 
 var map;
@@ -137,7 +144,7 @@ function updateMarkers(data) {
           });
         return marker;
     })
-    
+
     var markerCluster = new MarkerClusterer(map, markers,
         {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 }

@@ -1,13 +1,12 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>shARe</title>
+		<title>shARe - Anonymous Discussion</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-
-		<script>
+		<!-- <script>
 			// Asynchronously iniitializes Facebook Integration
 			// App ID, API version, xfbml = true
 			window.fbAsyncInit = function() {
@@ -36,10 +35,6 @@
 			} else {
 			console.log('There was a problem logging you in.');
 			}
-			});
-					// If not Authorized, redirect to index and avoid
-					location.replace("dashboard.html")
-				}
 			}
 
 			// Function to check login state - when I wake up, implement on document Load
@@ -73,24 +68,24 @@
 				      }
 				  }, {scope: 'email'});
 				}
-		</script>
+		</script> -->
 	</head>
 	<body>
 		<div id="wrapper">
 				<header id="header">
 					<div class="logo">
-						<span class="icon fa fa-mobile"></span>
+						<span class="icon fa-lg fa-mobile"></span>
 					</div>
 					<div class="content">
 						<div class="inner">
-							<h1>shARe</h1>
+							<h1 style="text-transform:none;">shARe</h1>
 							<p>A Virtual Anonymous Discussion Board Through Your Smartphone Camera Lens</p>
 						</div>
 					</div>
 					<nav>
 						<ul>
 							<li><a href="#about">About</a></li>
-							<li><a href="#login">Login</a></li>
+							<li><a href="dashboard.html">Get Started</a></li>
 							<li><a href="#team">Team</a></li>
 						</ul>
 					</nav>
@@ -105,19 +100,127 @@
 
 						<!-- Work -->
 							<article id="team">
-								<h2 class="major">Team</h2>
+								<h1 class="major">Team</h1>
 								<span class="image main"></span>
-								<p>Meet the team behind shARe </p>
+								<h2>Meet the awesome team behind shARe!</h2>
+								<div class="row">
+			          <div class="col-sm-3">
+			            <div class="team-member">
+			              <img class="img-circle" style="border-radius: 50%; max-height: 50%; max-width: 50%;" src="images/team/vincent.jpg" alt="">
+			              <h2>Vincent Teng</h2>
+			              <h3 class="text-muted">iOS Backend - Swift & AWS</h3>
+			              <ul class="list-inline social-buttons">
+			                <li style="display: inline;">
+			                  <a href="https://github.com/vincentt117">
+			                    <i class="fa fa-github fa-2x"></i>
+			                  </a>
+			                </li>
+			                <li style="display: inline;">
+			                  <a href="https://www.facebook.com/tengvinc">
+			                    <i class="fa fa-facebook fa-2x"></i>
+			                  </a>
+			                </li>
+			                <li style="display: inline;">
+			                  <a href="https://www.linkedin.com/in/vincent-teng/">
+			                    <i class="fa fa-linkedin fa-2x"></i>
+			                  </a>
+			                </li>
+			              </ul>
+			            </div>
+			          </div>
+
+
+			          <div class="col-sm-3">
+			            <div class="team-member">
+			              <img class="img-circle" style="border-radius: 50%; max-height: 50%; max-width: 50%;" src="images/team/bohan.jpg" alt="">
+			              <h2>Bohan Jiang</h2>
+			              <h3 class="text-muted">iOS Frontend Developer - Swift/UI & Design/AWS</h3>
+			              <ul class="list-inline social-buttons">
+			                <li style="display: inline;">
+			                  <a href="https://github.com/BohanJiangg">
+			                    <i class="fa fa-github fa-2x"></i>
+			                  </a>
+			                </li>
+			                <li style="display: inline;">
+			                  <a href="https://www.facebook.com/bohan.jiang.35">
+			                    <i class="fa fa-facebook fa-2x"></i>
+			                  </a>
+			                </li>
+			                <li style="display: inline;">
+			                  <a href="https://www.linkedin.com/in/bohanjiang/">
+			                    <i class="fa fa-linkedin fa-2x"></i>
+			                  </a>
+			                </li>
+			              </ul>
+			            </div>
+			          </div>
+
+			         <div class="col-sm-3">
+			            <div class="team-member">
+			              <img class="img-circle" style="border-radius: 50%; max-height: 50%; max-width: 50%;" src="images/team/prashant.png" alt="">
+			              <h2>Prashant Patel</h2>
+			              <h3 class="text-muted">Front End Developer - Web App/AWS</h3>
+			              <ul class="list-inline social-buttons">
+			                <li style="display: inline;">
+			                  <a href="https://github.com/prasvpatel">
+			                    <i class="fa fa-github fa-2x"></i>
+			                  </a>
+			                </li>
+			                <li style="display: inline;">
+			                  <a href="https://www.facebook.com/prasvpatel">
+			                    <i class="fa fa-facebook fa-2x"></i>
+			                  </a>
+			                </li>
+			                <li style="display: inline;">
+			                  <a href="https://www.linkedin.com/in/prasvpatel/">
+			                    <i class="fa fa-linkedin fa-2x"></i>
+			                  </a>
+			                </li>
+			              </ul>
+			            </div>
+			          </div>
+
+			          <div class="col-sm-3">
+			            <div class="team-member">
+			              <img class="img-circle" style="border-radius: 50%; max-height: 50%; max-width: 50%;" src="images/team/mohammad.jpg" alt="">
+			              <h2>Mohammad Ismail</h2>
+			              <h3 class="text-muted">Full Stack Web Developer - Web Companion/AWS/Firebase</h3>
+			              <ul class="list-inline social-buttons">
+			                <li style="display: inline;">
+			                  <a href="https://github.com/ismailmohammad">
+			                    <i class="fa fa-github fa-2x"></i>
+			                  </a>
+			                </li>
+			                <li style="display: inline;">
+			                  <a href="https://www.facebook.com/ismailmohammadn">
+			                    <i class="fa fa-facebook fa-2x"></i>
+			                  </a>
+			                </li>
+			                <li style="display: inline;">
+			                  <a style=" text-decoration: none;" href="https://www.linkedin.com/in/mohammad-ismail/">
+			                    <i class="fa fa-linkedin fa-2x"></i>
+			                  </a>
+			                </li>
+			              </ul>
+			            </div>
+			          </div>
+			        </div>
 							</article>
 
 						<!-- About -->
 							<article id="about">
-								<h2 class="major">About</h2>
+								<h1 class="major">About</h1>
+								<img style="max-height: 25%; max-width: 25%;" src="images/branding/logo.png" alt="">
+								<br><br>
 								<p>shARe offers a third dimension to online anonymous thought posting, creating an interactive environment through the lens of your smartphone camera. Users can generate anonymous word posts in-app and plant the 3D comments in their 360-degree view within a 20m radius. Additionally, users can also create physical threads through sequential posting with respect to another user's post.</p>
+								<img style="max-height: 40%; max-width: 40%; display: inline; padding-right: 5px; padding-down: 5px;" src="images/branding/screenshot1.jpg" alt="">
+								<img style="max-height: 40%; max-width: 40%; display: inline; padding-right: 5px; padding-down: 5px;" src="images/branding/screenshot2.jpg" alt="">
+								<img style="max-height: 40%; max-width: 40%; display: inline; padding-right: 5px; padding-down: 5px;" src="images/branding/screenshot3.jpg" alt="">
+								<img style="max-height: 40%; max-width: 40%; display: inline; padding-right: 5px; padding-down: 5px;" src="images/branding/screenshot4.jpg" alt="">
 							</article>
 					</div>
 
-					<a class = "major" href="javascript:fbLogin();" id="fbLink"><img src="fblogin.png"/></a>
+					<!-- <a class = "major" href="javascript:fbLogin();" id="fbLink"><img src="fblogin.png"/></a> -->
 
 
 			</div>
