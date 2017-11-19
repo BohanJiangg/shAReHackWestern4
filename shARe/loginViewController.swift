@@ -22,6 +22,18 @@ class loginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //NSLog("\(AccessToken.current)")
+      /**  if let accessToken =  {
+        
+             getFBUserData()
+             let viewController:UIViewController = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as UIViewController
+             // .instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
+             self.view.backgroundColor = nil
+             self.present(viewController, animated: false, completion: nil)
+ 
+           // let vc = ViewController()
+        }**/
+        
         
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 31))
         label.center = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/6)
@@ -55,8 +67,9 @@ class loginViewController: UIViewController, FBSDKLoginButtonDelegate {
         //creating button
        
         let loginButton = FBSDKLoginButton()
+        
         loginButton.center = view.center
-
+        
         self.view.backgroundColor = UIColor.white
         let pastelView = PastelView(frame: view.bounds)
         
@@ -81,19 +94,14 @@ class loginViewController: UIViewController, FBSDKLoginButtonDelegate {
         //adding it to view
         view.addSubview(loginButton)
         
-        if (FBSDKAccessToken.current() != nil){
-            
-            getFBUserData()
-            let viewController:UIViewController = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as UIViewController
-            // .instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
-            self.view.backgroundColor = nil
-            self.present(viewController, animated: false, completion: nil)
         
-        }
         loginButton.delegate = self
        // view.resig
     }
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        FBSDKAccessToken.setCurrent(nil)
+        FBSDKLoginManager().logOut()
+        FBSDKProfile.setCurrent(nil)
         print("User Logged Out")
     }
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {

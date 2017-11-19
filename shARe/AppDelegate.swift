@@ -74,15 +74,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window!.makeKeyAndVisible()
         
+        
+        if(AccessToken.current != nil){
+            NSLog("Logged In")
+        }
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        
+        
         if #available(iOS 11.0, *) {
-            let vc = loginViewController()
-            self.window!.rootViewController = vc
+            if let accessToken = FBSDKAccessToken.current(){
+                print(accessToken)
+               self.window!.rootViewController =  ViewController()
+            }else{
+                print("Not logged In.")
+                self.window!.rootViewController = loginViewController()
+            }
+            
         } else {
             self.window!.rootViewController = NotSupportedViewController() 
         }
         
         
-         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        return true
+         //return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
    /**func applicationWillResignActive(_ application: UIApplication) {
