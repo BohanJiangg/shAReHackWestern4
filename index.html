@@ -6,53 +6,105 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<script>
+			// Asynchronously iniitializes Facebook Integration
+			// App ID, API version, xfbml = true
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId      : '291168591401232',
+					cookie		 : true,
+					xfbml      : true,
+					version    : 'v2.11'
+				});
+				FB.AppEvents.logPageView();
+			};
+
+			function statusChangeCallback(response){
+				// Testing Line with Global Variable. Remove later
+				// Just for testing response json keys/values
+				response_json = response;
+				if (response.status === "connected") {
+					AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+					IdentityPoolId: 'us-east-1:456a4c88-7f96-4783-a82e-a97f2c9dc22a',
+					Logins: {
+					'graph.facebook.com': response.authResponse.accessToken
+					}
+				});
+
+			console.log('You are now logged in.');
+			} else {
+			console.log('There was a problem logging you in.');
+			}
+			});
+					// If not Authorized, redirect to index and avoid
+					location.replace("dashboard.html")
+				}
+			}
+
+			// Function to check login state - when I wake up, implement on document Load
+			// So redirect if not logged, ie. don't let them get to Dashboard if they're not
+			// Authorized
+			function checkLoginState() {
+				// Get the login response from the page
+				FB.getLoginStatus(function(response) {
+					// Call the statusChangeCallback function
+					statusChangeCallback(response);
+				});
+			}
+
+			// Load the SDK Asynchronously
+			(function(d, s, id){
+				 var js, fjs = d.getElementsByTagName(s)[0];
+				 if (d.getElementById(id)) {return;}
+				 js = d.createElement(s); js.id = id;
+				 js.src = "https://connect.facebook.net/en_US/sdk.js";
+				 fjs.parentNode.insertBefore(js, fjs);
+			 }(document, 'script', 'facebook-jssdk'));
+
+			 // Facebook Login with JavaScript SDK
+			 function fbLogin() {
+    FB.login(function (response) {
+        if (response.authResponse) {
+            // Get and display the user profile data
+            getFbUserData();
+        } else {
+            document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
+        }
+    }, {scope: 'email'});
+}
+		</script>
 	</head>
 	<body>
-
-			<div id="wrapper">
-					<header id="header">
-						<div class="logo">
-							<span class="icon fa fa-mobile"></span>
+		<div id="wrapper">
+				<header id="header">
+					<div class="logo">
+						<span class="icon fa fa-mobile"></span>
+					</div>
+					<div class="content">
+						<div class="inner">
+							<h1>shARe</h1>
+							<p>A Virtual Anonymous Discussion Board Through Your Smartphone Camera Lens</p>
 						</div>
-						<div class="content">
-							<div class="inner">
-								<h1>shARe</h1>
-								<p>A Virtual Anonymous Discussion Board Through Your Smartphone Camera Lens</p>
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<li><a href="#about">About</a></li>
-								<li><a href="#intro">Login</a></li>
-								<li><a href="#work">Team</a></li>
-							</ul>
-						</nav>
-					</header>
+					</div>
+					<nav>
+						<ul>
+							<li><a href="#about">About</a></li>
+							<li><a href="#login">Login</a></li>
+							<li><a href="#team">Team</a></li>
+						</ul>
+					</nav>
+				</header>
 
 				<!-- Main -->
 					<div id="main">
 
 						<!-- Intro -->
-							<article id="intro">
-								<h2 class="major">Login</h2>
-								<p>Login into your account <a href="../shAre web Companion/login.html"></a></p>
-								<form method="post" action="#">
-									<div class="field half first">
-										<label for="name">Username</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field half">
-										<label for="password">Password</label>
-										<input type="password" name="email" id="email" />
-									</div>
-									<ul class="actions">
-										<li><input type="button" value="Login" class="special" /></li>
-									</ul>
-								</form>
-							</article>
+								<article id="login">
+								</article>
 
 						<!-- Work -->
-							<article id="work">
+							<article id="team">
 								<h2 class="major">Team</h2>
 								<span class="image main"></span>
 								<p>Meet the team behind shARe </p>
@@ -65,11 +117,12 @@
 							</article>
 					</div>
 
+					<a class = "major" href="javascript:void(0);" onclick="fbLogin()" id="fbLink"><img src="fblogin.png"/></a>
+
 
 			</div>
 
 		<!-- BG -->
-			<div id="bg"></div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
