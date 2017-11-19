@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/css/main.css" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-  <title>ShARe Web Companion - Dashboard</title>
+  <title>ShARe Web Companion - Dashboard2</title>
 
   <!-- Custom fonts for this template -->
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
@@ -28,14 +28,34 @@
     });
   </script>
 
-  <!-- LEAVE THIS SCRIPT ALONE, CHANGE ANYTHNG ELSE OTHER THAN THE LOGIN BUTTON BUT YOU CAN PLAY AROUND WITH PLACEMENT OF THE BUTTON -->
-  <!-- Look for the button below in the doc it has a tag like <fb or something -->
-  
-  <script type="text/js" src="assets/js/dashboard_auth.js"></script>
-  <script type="text/js" src="assets/js/dashboard.js"></script>
+  <script type="text/javascript" src="assets/js/dashboard_auth.js"></script>
+  <script type="text/javascript" src="assets/js/dashboard.js"></script>
 </head>
 
 <body>
+  <!-- Facebook SDK asyc load -->
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '291168591401232',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v2.11'
+      });
+        
+      FB.AppEvents.logPageView();   
+        
+    };
+    
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
 	<div id="wrapper">
     <header id="header">
       <nav>
@@ -45,27 +65,24 @@
       </nav>
       <br>
     </header>
-  <div id="map" style="width:100%;height:500px;background:black;"></div>
+    <div id="map" style="width:100%;height:500px;background:black;"></div>
 
-  <fb:login-button
-    scope="public_profile,email"
-    onlogin="checkLoginState();">
-  </fb:login-button>
-
-  <script>
-    function initMap() {
-      var location = {lat: 43.00513, lng: -81.27613};
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
-        center: location
-      });
-      var marker = new google.maps.Marker({
-        position: location,
-        map: map
-      });
-    }
-  </script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5hsvlyyx-0m06WsE7gDk4nKFO8ioRS4o&callback=initMap"></script>
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+    
+    <script>
+      function initMap() {
+        var location = {lat: 43.00513, lng: -81.27613};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: location
+        });
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map
+        });
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5hsvlyyx-0m06WsE7gDk4nKFO8ioRS4o&callback=initMap"></script>
 	</div>
 
 	<!-- BG -->
@@ -75,6 +92,6 @@
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/skel.min.js"></script>
 	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js"></script>
 	</body>
 </html>
