@@ -274,6 +274,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
                     //let date = Date(timeIntervalSince1970: timestamp)
                     //print("\(date)")
                     let node : SCNNode = createNewBubbleParentNode( "\(textField.text!)" )
+                    
                     let field = textField.text!
                     textField.text=""
                     textField.isHidden = true
@@ -304,7 +305,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
                         (error: Error?) -> Void in
                         
                         if let error = error {
-                            print("Amazon DynamoDB Save Error: \(error)")
+                            print("Amazon DynamoDB Save Error: \(error.localizedDescription)")
                             return
                         }
                         print("A location was added.")
@@ -312,17 +313,11 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
                     
                 }
             }
-            
-            
-            
-            
-            
-            
-            
-           
-            
+  
         }
     }
+    
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -345,6 +340,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
         
         // BUBBLE-TEXT
         let bubbleDepth : Float = 0.01
+        
         let bubble = SCNText(string: text, extrusionDepth: CGFloat(bubbleDepth))
         var font = UIFont(name: "Futura", size: 0.15)
         font = font?.withTraits(traits: .traitBold)

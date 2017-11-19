@@ -41,7 +41,7 @@ class loginViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.view.addSubview(label)
         
         let appName = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 51))
-        appName.center = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/4 - 11)
+        appName.center = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/4 - 10)
         appName.textAlignment = .center
         appName.text = "shARe"
         appName.font = UIFont (name: "Avenir-Heavy", size: 50)
