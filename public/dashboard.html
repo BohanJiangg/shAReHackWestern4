@@ -34,14 +34,13 @@
 
   <!-- LEAVE THIS SCRIPT ALONE, CHANGE ANYTHNG ELSE OTHER THAN THE LOGIN BUTTON BUT YOU CAN PLAY AROUND WITH PLACEMENT OF THE BUTTON -->
   <!-- Look for the button below in the doc it has a tag like <fb or something -->
-  <!-- NEVER MIND, I SAVED THE CODE HERE
 
   <fb:login-button
     scope="public_profile,email"
     onlogin="checkLoginState();">
   </fb:login-button>
 
-  -->
+
   <script>
 
   // Testing Global Variable. REMOVE BEFORE PRODUCTION PHASE
@@ -144,9 +143,12 @@
 			<header id="header">
 				<nav>
 					<ul>
+						<li><a href="../shAReHackWestern4/index.html">Logout</a></li>
+
 						<li><a href="index.html">Logout</a></li>
 					</ul>
 				</nav>
+				<br>
 			</header>
 			<div id="map" style="width:100%;height:500px;background:black;"></div>
 
@@ -157,7 +159,7 @@
 
 			<script>
       function initMap() {
-        var location = {lat: -25.363, lng: 131.044};
+        var location = {lat: 43.00513, lng: -81.27613};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
           center: location
