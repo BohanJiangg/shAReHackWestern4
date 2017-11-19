@@ -1,186 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ShARe">
+  <meta name="author" content="ShAReTeam">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-  <head>
+  <title>ShARe Web Companion - Dashboard</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="ShARe">
-    <meta name="author" content="ARsonists">
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-
-    <title>ShARe Web Companion - Dashboard - test</title>
-
-    <!-- Custom fonts for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-
-  </head>
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
   <!-- AWS SDK for JavaScript -->
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.152.0.min.js"></script>
 
   <!-- AWS Global Configuration -->
   <script>
-  var myCredentials = new AWS.CognitoIdentityCredentials({IdentityPoolId:'us-east-1:456a4c88-7f96-4783-a82e-a97f2c9dc22a'});
-  var myConfig = new AWS.Config({
-    credentials: myCredentials, region: 'us-east-1'
-  });
+    var myCredentials = new AWS.CognitoIdentityCredentials({IdentityPoolId:'us-east-1:456a4c88-7f96-4783-a82e-a97f2c9dc22a'});
+    var myConfig = new AWS.Config({
+      credentials: myCredentials, region: 'us-east-1'
+    });
   </script>
 
   <!-- LEAVE THIS SCRIPT ALONE, CHANGE ANYTHNG ELSE OTHER THAN THE LOGIN BUTTON BUT YOU CAN PLAY AROUND WITH PLACEMENT OF THE BUTTON -->
   <!-- Look for the button below in the doc it has a tag like <fb or something -->
 
   <fb:login-button
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+  </fb:login-button>
+  
+  <script type="text/js" src="assets/js/dashboard_auth.js"></script>
+  <script type="text/js" src="assets/js/dashboard.js"></script>
+</head>
+
+<body>
+	<div id="wrapper">
+    <header id="header">
+      <nav>
+        <ul>
+          <li><a href="index.html">Logout</a></li>
+        </ul>
+      </nav>
+      <br>
+    </header>
+  <div id="map" style="width:100%;height:500px;background:black;"></div>
+
+  <fb:login-button
     scope="public_profile,email"
     onlogin="checkLoginState();">
   </fb:login-button>
 
-
   <script>
-
-  // Testing Global Variable. REMOVE BEFORE PRODUCTION PHASE
-  var response_json = {};
-  var data_scan = {};
-
-    // Asynchronously iniitializes Facebook Integration
-    // App ID, API version, xfbml = true
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '291168591401232',
-        xfbml      : true,
-        version    : 'v2.11'
+    function initMap() {
+      var location = {lat: 43.00513, lng: -81.27613};
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: location
       });
-      FB.AppEvents.logPageView();
-    };
-
-    function statusChangeCallback(response){
-      // Testing Line with Global Variable. Remove later
-      // Just for testing response json keys/values
-      response_json = response;
-      if (response.status === "connected") {
-        AWS.config.region = 'us-east-1';
-        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-          IdentityPoolId: 'us-east-1:456a4c88-7f96-4783-a82e-a97f2c9dc22a',
-          Logins: {
-            'graph.facebook.com': response.authResponse.accessToken
-          }
-        });
-        var params = {
-          TableName : 'share-mobilehub-1774715290-locations',
-          // Key: { 'id': '0.385739-0.254811'}
-         // FilterExpression: "#zvalue between :start_yr and :end_yr",
-         // ExpressionAttributeNames: {
-         //     "#zvalue": "z",
-         // },
-         // ExpressionAttributeValues: {
-         //     ":start_yr": 0.04,
-         //     ":end_yr": 0.31
-         // }
-        };
-        var documentClient = new AWS.DynamoDB.DocumentClient();
-
-        documentClient.scan(params, function(err, data) {
-          if (err) console.log(err);
-          else {
-            data_scan = data;
-            console.log(data);
-          }
-        });
-      //   var dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
-      //   var docClient = new AWS.DynamoDB.DocumentClient({service: dynamodb });
-      //   function scanData(docClient){
-      //     console.log(1);
-      //     var params = {
-      //        TableName: "share-mobilehub-1774715290-locations",
-      //        ProjectionExpression: "#zvalue, title, info.rating",
-      //        FilterExpression: "#zvalue between :start_yr and :end_yr",
-      //        ExpressionAttributeNames: {
-      //            "#zvalue": "z",
-      //        },
-      //        ExpressionAttributeValues: {
-      //            ":start_yr": 0.04,
-      //            ":end_yr": 0.31
-      //        }
-      //    };
-      //
-      //    docClient.scan(params, onScan);
-      //
-      //    function onScan(err, data) {
-      //      if (err){
-      //        console.log("You just made a big mistake!");
-      //      } else {
-      //        console.log(data);
-      //        data_scan = data;
-      //      }
-      //    }
-      //   scanData(docClient);
-      //   // If not Authorized, redirect to index and avoid
-      //   //location.replace("index.html");
-      // }
-    }
-  }
-
-    // Function to check login state - when I wake up, implement on document Load
-    // So redirect if not logged, ie. don't let them get to Dashboard if they're not
-    // Authorized
-    function checkLoginState() {
-      // Get the login response from the page
-      FB.getLoginStatus(function(response) {
-        // Call the statusChangeCallback function
-        statusChangeCallback(response);
+      var marker = new google.maps.Marker({
+        position: location,
+        map: map
       });
     }
-
-    // Load the SDK Asynchronously
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "https://connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
   </script>
-
-  <!-- Feel Free to Change below this as well -->
-	<body>
-
-	<div id="wrapper">
-
-			<header id="header">
-				<nav>
-					<ul>
-						<li><a href="index.html">Logout</a></li>
-					</ul>
-				</nav>
-				<br>
-			</header>
-			<div id="map" style="width:100%;height:500px;background:black;"></div>
-
-      <fb:login-button
-        scope="public_profile,email"
-        onlogin="checkLoginState();">
-      </fb:login-button>
-
-			<script>
-      function initMap() {
-        var location = {lat: 43.00513, lng: -81.27613};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: location
-        });
-        var marker = new google.maps.Marker({
-          position: location,
-          map: map
-        });
-      }
-			</script>
-			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5hsvlyyx-0m06WsE7gDk4nKFO8ioRS4o&callback=initMap"></script>
-
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5hsvlyyx-0m06WsE7gDk4nKFO8ioRS4o&callback=initMap"></script>
 	</div>
 
 	<!-- BG -->
@@ -191,9 +81,5 @@
 	<script src="assets/js/skel.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-
-
-
 	</body>
-
 </html>
