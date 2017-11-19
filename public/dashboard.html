@@ -18,13 +18,14 @@
   <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
   <!-- AWS SDK for JavaScript -->
-  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.152.0.min.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
 
   <!-- AWS Global Configuration -->
   <script>
-    var myCredentials = new AWS.CognitoIdentityCredentials({IdentityPoolId:'us-east-1:456a4c88-7f96-4783-a82e-a97f2c9dc22a'});
-    var myConfig = new AWS.Config({
-      credentials: myCredentials, region: 'us-east-1'
+    // Initialize the Amazon Cognito credentials provider
+    AWS.config.region = 'us-east-1'; // Region
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'us-east-1:456a4c88-7f96-4783-a82e-a97f2c9dc22a',
     });
   </script>
 
