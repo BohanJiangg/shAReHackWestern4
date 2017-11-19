@@ -28,9 +28,6 @@
         IdentityPoolId: 'us-east-1:456a4c88-7f96-4783-a82e-a97f2c9dc22a',
     });
   </script>
-
-  <script type="text/javascript" src="assets/js/dashboard_auth.js"></script>
-  <script type="text/javascript" src="assets/js/dashboard.js"></script>
 </head>
 
 <body>
@@ -70,19 +67,6 @@
 
     <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
     
-    <script>
-      function initMap() {
-        var location = {lat: 43.00513, lng: -81.27613};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: location
-        });
-        var marker = new google.maps.Marker({
-          position: location,
-          map: map
-        });
-      }
-    </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5hsvlyyx-0m06WsE7gDk4nKFO8ioRS4o&callback=initMap"></script>
 	</div>
 
@@ -94,5 +78,9 @@
 	<script src="assets/js/skel.min.js"></script>
 	<script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
+  <script type="text/javascript" src="assets/js/dashboard_auth.js"></script>
+  <script type="text/javascript" src="assets/js/dashboard.js"></script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+  </script>
 	</body>
 </html>

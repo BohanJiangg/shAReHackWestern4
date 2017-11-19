@@ -22,14 +22,4 @@ function connectToCognito(accessToken) {
             }
         })
     })
-    AWS.config.credentials.get(function(err) {
-      if (err) console.log(err);
-      else console.log(AWS.config.credentials);
-    });
-    // AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    //     IdentityPoolId: 'us-east-1:456a4c88-7f96-4783-a82e-a97f2c9dc22a',
-    //     Logins: {
-    //         'graph.facebook.com': accessToken
-    //     }
-    // });
 }
