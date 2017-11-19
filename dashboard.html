@@ -46,6 +46,7 @@
 
   // Testing Global Variable. REMOVE BEFORE PRODUCTION PHASE
   var response_json = {};
+  var data_scan = {};
 
     // Asynchronously iniitializes Facebook Integration
     // App ID, API version, xfbml = true
@@ -58,49 +59,61 @@
       FB.AppEvents.logPageView();
     };
 
-    function scanData(docClient){
-      var params = {
-         TableName: "share-mobilehub-1774715290-locations",
-         ProjectionExpression: "#zvalue, title, info.rating",
-         FilterExpression: "#zvalue between :start_yr and :end_yr",
-         ExpressionAttributeNames: {
-             "#zvalue": "z",
-         },
-         ExpressionAttributeValues: {
-             ":start_yr": 0.04,
-             ":end_yr": 0.31
-         }
-     };
-
-     docClient.scan(params, onScan);
-
-     function onScan(err, data) {
-       if (err){
-         var x = "c";
-       } else {
-         console.log(data);
-       }
-     }
-    }
-
     function statusChangeCallback(response){
       // Testing Line with Global Variable. Remove later
       // Just for testing response json keys/values
       response_json = response;
       if (response.status === "connected") {
+        AWS.config.region = 'us-east-1';
         AWS.config.credentials = new AWS.CognitoIdentityCredentials({
           IdentityPoolId: 'us-east-1:456a4c88-7f96-4783-a82e-a97f2c9dc22a',
           Logins: {
             'graph.facebook.com': response.authResponse.accessToken
           }
         });
-        var dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
-        var docClient = new AWS.DynamoDB.DocumentClient({service: dynamodb });
-        scanData(docClient);
-        // If not Authorized, redirect to index and avoid
-        //location.replace("index.html");
-      }
+        var params = {
+          TableName : 'share-mobilehub-1774715290-locations',
+          Key: { 'id': '0.385739-0.254811'}
+        };
+        var documentClient = new AWS.DynamoDB.DocumentClient();
+
+        documentClient.get(params, function(err, data) {
+          if (err) console.log(err);
+          else console.log(data);
+        });
+      //   var dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
+      //   var docClient = new AWS.DynamoDB.DocumentClient({service: dynamodb });
+      //   function scanData(docClient){
+      //     console.log(1);
+      //     var params = {
+      //        TableName: "share-mobilehub-1774715290-locations",
+      //        ProjectionExpression: "#zvalue, title, info.rating",
+      //        FilterExpression: "#zvalue between :start_yr and :end_yr",
+      //        ExpressionAttributeNames: {
+      //            "#zvalue": "z",
+      //        },
+      //        ExpressionAttributeValues: {
+      //            ":start_yr": 0.04,
+      //            ":end_yr": 0.31
+      //        }
+      //    };
+      //
+      //    docClient.scan(params, onScan);
+      //
+      //    function onScan(err, data) {
+      //      if (err){
+      //        console.log("You just made a big mistake!");
+      //      } else {
+      //        console.log(data);
+      //        data_scan = data;
+      //      }
+      //    }
+      //   scanData(docClient);
+      //   // If not Authorized, redirect to index and avoid
+      //   //location.replace("index.html");
+      // }
     }
+  }
 
     // Function to check login state - when I wake up, implement on document Load
     // So redirect if not logged, ie. don't let them get to Dashboard if they're not
@@ -131,12 +144,12 @@
 			<header id="header">
 				<nav>
 					<ul>
-
 						<li><a href="index.html">Logout</a></li>
 					</ul>
 				</nav>
 			</header>
 			<div id="map" style="width:100%;height:500px;background:black;"></div>
+
       <fb:login-button
         scope="public_profile,email"
         onlogin="checkLoginState();">
@@ -144,7 +157,8 @@
 
 			<script>
       function initMap() {
-        var location = {lat: -25.363, lng: 131.044};
+        43.00513,-81.27613
+        var location = {lat: -25.363, lng: -81.27613};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
           center: location
