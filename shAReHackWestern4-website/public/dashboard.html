@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ShARe">
+  <meta name="author" content="ShAReTeam">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+  <title>ShARe Web Companion - Dashboard2</title>
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+  <!-- AWS SDK for JavaScript -->
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.152.0.min.js"></script>
+
+  <!-- AWS Global Configuration -->
+  <script>
+    // Initialize the Amazon Cognito credentials provider
+    AWS.config.region = 'us-east-1'; // Region
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'us-east-1:456a4c88-7f96-4783-a82e-a97f2c9dc22a',
+    });
+  </script>
+</head>
+
+<body>
+  <!-- Facebook SDK asyc load -->
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '291168591401232',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v2.11'
+      });
+
+      FB.AppEvents.logPageView();
+
+    };
+
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+	<div id="wrapper">
+    <header id="header">
+      <nav>
+        <ul>
+          <li><a href="JavaScript:logoutFB();">Logout</a></li>
+        </ul>
+      </nav>
+      <br>
+    </header>
+    <div id="map" style="width:100%;height:500px;background:black;"></div>
+
+    <br>
+    <div class="fb-login-button" scope="public_profile,email" onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
+    <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5hsvlyyx-0m06WsE7gDk4nKFO8ioRS4o&callback=initMap"></script>
+	</div>
+
+	<!-- BG -->
+	<div id="bg"></div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script type="text/javascript" src="assets/js/dashboard_auth.js"></script>
+  <script type="text/javascript" src="assets/js/dashboard.js"></script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+  </script>
+	</body>
+</html>
