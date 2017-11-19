@@ -19,11 +19,12 @@ class Locations: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     
     var _id: String?
     var _comment: String?
-    var _lat: NSNumber?
-    var _long: NSNumber?
-    var _x: NSNumber?
-    var _y: NSNumber?
-    var _z: NSNumber?
+    var _lat: String?
+    var _long: String?
+    var _x: String?
+    var _y: String?
+    var _z: String?
+    var _time: String?
     
     class func dynamoDBTableName() -> String {
         
@@ -41,6 +42,7 @@ class Locations: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
             "_comment" : "comment",
             "_lat" : "lat",
             "_long" : "long",
+            "_time" : "time",
             "_x" : "x",
             "_y" : "y",
             "_z" : "z",

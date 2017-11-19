@@ -56,6 +56,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let scene = SCNScene()
         sceneLocationView.scene = scene
         sceneLocationView.autoenablesDefaultLighting = true
@@ -112,7 +113,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(gestureRecognize:)))
         view.addGestureRecognizer(tapGesture)
-
+        
         
         textField.delegate = self
         view.setNeedsUpdateConstraints()
@@ -123,6 +124,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
         button.frame = CGRect(origin: screenCentre, size: CGSize(width: 100, height: 100))
         button.center = screenCentre
         button.tintColor = UIColor.white
+        button.isEnabled = false
         view.addSubview(button)
        
         /**
@@ -231,7 +233,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
     
     @objc func handleTap(gestureRecognize: UITapGestureRecognizer?) {
         
-        NSLog("test")
+        
         // HIT TEST : REAL WORLD
         // Get Screen Centre
         
@@ -266,11 +268,43 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
             } else {
                 // Print out coordinates
                 // let node : SCNNode = createNewBubbleParentNode( "\(String(describing: worldCoord))" )
-                if (textField.text! != ""){
+                 NSLog("Hello1")
+                if (textField.text! != "" && textField.text!.count < 140){
+                    NSLog("Hello2")
                     // Print out coordinates
                     // let node : SCNNode = createNewBubbleParentNode( "\(String(describing: worldCoord))" )
-                   
+                    
+                    let timestamp = NSDate().timeIntervalSince1970
+                    //let date = Date(timeIntervalSince1970: timestamp)
+                    //print("\(date)")
                     let node : SCNNode = createNewBubbleParentNode( "\(textField.text!)" )
+                    // Upload coordiantes
+                    let dynamoDbObjectMapper = AWSDynamoDBObjectMapper.default()
+                    
+                    //Create data object using data models you downloaded from Mobile Hub
+                    let locationItem: Locations = Locations();
+                    
+                    
+                    // Set lat and long with Bohan’s method afterwards
+                    locationItem._id = String(transform.columns.3.x) + String(transform.columns.3.y)
+                    locationItem._x = String(describing: transform.columns.3.x)
+                    locationItem._y = String(describing: transform.columns.3.y)
+                    locationItem._z = String(describing: transform.columns.3.z)
+                    locationItem._lat = String(describing: currentLatitude!)
+                    locationItem._long = String(describing: currentLongitude!)
+                    locationItem._comment = textField.text!
+                    locationItem._time = String(timestamp)
+                    
+                    // Save a new item
+                    dynamoDbObjectMapper.save(locationItem, completionHandler: {
+                        (error: Error?) -> Void in
+                        
+                        if let error = error {
+                            print("Amazon DynamoDB Save Error: \(error)")
+                            return
+                        }
+                        print("A location was added.")
+                    })
                     //textFieldShouldReturn(textField)
                     textField.text=""
                     textField.isHidden = true
@@ -279,31 +313,7 @@ class ViewController: UIViewController, MKMapViewDelegate, SceneLocationViewDele
                     sceneLocationView.scene.rootNode.addChildNode(node)
                 }
             }
-            // Upload coordiantes
-            let dynamoDbObjectMapper = AWSDynamoDBObjectMapper.default()
-            
-            //Create data object using data models you downloaded from Mobile Hub
-            let locationItem: Locations = Locations();
-            
-            
-            // Set lat and long with Bohan's method afterwards
-            locationItem._id = String(transform.columns.3.x) + String(transform.columns.3.y)
-            locationItem._x = NSNumber(value: transform.columns.3.x)
-            locationItem._y = NSNumber(value: transform.columns.3.y)
-            locationItem._z = NSNumber(value: transform.columns.3.z)
-            locationItem._lat = currentLatitude as! NSNumber
-            locationItem._long = currentLongitude as! NSNumber
-            locationItem._comment = textField.text!
-            // Save a new item
-            dynamoDbObjectMapper.save(locationItem, completionHandler: {
-                (error: Error?) -> Void in
-                
-                if let error = error {
-                    print("Amazon DynamoDB Save Error: \(error)")
-                    return
-                }
-                print("A location was added.")
-            })
+           
             
         }
     }
